@@ -27,7 +27,6 @@ let results = []
 db.collection('leaderboard').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         results.push(doc.data())
-        console.log(doc.data())
     });
 })
 
@@ -61,4 +60,4 @@ app.post('/submit', function (req, res) {
     )
 });
 
-app.listen(port, () => console.log(`App listening on port ${port}!`))
+app.listen(PORT, () => console.log(`App listening on port ${port}!`))
