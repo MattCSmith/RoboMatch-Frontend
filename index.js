@@ -31,6 +31,10 @@ db.collection('leaderboard').get().then((snapshot) => {
     });
 })
 
+app.get('/', function (req, res) {
+    res.send(`RoboMatch Backend`)
+});
+
 app.get('/view', function (req, res) {
     res.json(results)
 });
