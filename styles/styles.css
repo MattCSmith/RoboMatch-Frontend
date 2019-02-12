@@ -1,0 +1,234 @@
+:root {
+  --one: #4085bf;
+  --two: #76acd4;
+  --three: #c2c9ccc0;
+  --four: #8192a3;
+  --blue: #1e4d79;
+}
+
+body {
+  background: url("../images/trianglify.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background: rgba(255, 255, 255, 0.575);
+  border: 2px solid var(--three);
+  border-radius: 10px;
+  padding: 11px 30px;
+  min-width: 20%;
+  color: var(--blue);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover, .active {
+  background: #ffffff6e;
+  border: 2px solid var(--one);
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}
+
+#panel {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.753);
+  border-radius: 15px;
+  border: 1px solid var(--three);
+  text-align: center;
+  width: 80%;
+  height: auto;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 20px;
+  margin-bottom: 90px
+}
+
+#panel h1 {
+  font-size: 1.8em;
+  font-family: 'Audiowide', cursive;
+  color: var(--one);
+  margin: 18px 0 0 0;
+}
+
+#panel .menuNav button {
+  margin: 20px 1%;
+  padding: 10px 10px 6px;
+  font-size: 17px
+}
+
+#panel .menuNav i {
+  display: inline;
+  font-size: 20px;
+  padding: 0px;
+  padding-right: 10px;
+  color: var(--two)
+}
+
+#panel .menuNav p {
+  display: inline;
+  font-size: 18px;
+  color: var(--blue)
+}
+
+#panel h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #4085bf
+}
+
+/* Custom dropdown */
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px;
+  font-size: 1.0em;
+}
+
+.custom-dropdown select {
+  background-color: var(--one);
+  color: #fff;
+  font-size: inherit;
+  padding: 13px 50px 10px 25px;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button;
+  /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before, .custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after {
+  /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before {
+  /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0, 0, 0, .3);
+}
+
+.custom-dropdown select[disabled]::after {
+  color: rgba(0, 0, 0, .1);
+}
+
+.custom-dropdown::before {
+  background-color: rgba(0, 0, 0, .15);
+}
+
+.custom-dropdown::after {
+  color: rgba(0, 0, 0, .4);
+}
+
+/* Info Panel */
+
+#infoPanel {
+  width: 80%;
+  margin: 15px auto;
+  border: 1px solid var(--three);
+  border-radius: 10px;
+  padding: 15px 25px 30px 25px;
+  background: #ffffff71
+}
+
+#infoPanel h2 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #4085bf
+}
+
+#infoPanel p {
+  margin: 0;
+  color: var(--four);
+  font-family: 'Raleway', sans-serif;
+  padding: 10px;
+  text-align: justify;
+}
+
+#infoPanel a {
+  color: var(--one);
+  text-decoration: none;
+}
+
+/* slider */
+
+#sliderContainer {
+  margin: 15px 0 20px 0
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 70%;
+  height: 25px;
+  background: var(--three);
+  border-radius: 8px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 29px;
+  height: 29px;
+  background: var(--one);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  /* Set a specific slider handle width */
+  height: 25px;
+  /* Slider handle height */
+  background: var(--one);
+  border-radius: 50%;
+  cursor: pointer;
+  /* Cursor on hover */
+}
+
+#slideNum {
+  font-family: 'Raleway', sans-serif;
+  padding: 10px;
+  color: var(--one);
+  font-weight: bold
+}
