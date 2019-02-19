@@ -205,10 +205,31 @@ displayLeaderboard = () => {
 
     const tableCont = document.createElement("div");
     tableCont.setAttribute("style", "overflow-x:auto");
+    leaderContainer.appendChild(tableCont)
 
+    const table = document.createElement("table")
+    table.setAttribute("id", "table")
+    tableCont.appendChild(table)
+
+    const tbody = document.createElement("tbody")
+    table.appendChild(tbody)
+
+    const tr = document.createElement("tr")
+    tbody.appendChild(tr)
+
+    const headingsArray = ["fas fa-user-ninja", "far fa-star", "far fa-clock", "fas fa-mouse-pointer","fas fa-crosshairs", "fas fa-robot", "fas fa-trophy"]
+    headingsArray.forEach(h => {
+        const heading = document.createElement("th")
+        tr.appendChild(heading)
+        
+        const i = document.createElement("i")
+        i.setAttribute("class", h)
+        heading.appendChild(i)
+    });
     
 
     panel.appendChild(leaderContainer);
+    fetchLeaders()
 };
 
 displayAbout = () => {

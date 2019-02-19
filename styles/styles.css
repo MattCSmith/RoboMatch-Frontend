@@ -355,3 +355,28 @@ margin: 0;
   margin: 25px 0 0;
   border-radius: 5px
 }
+
+table {
+  width: 95%;
+  margin: 25px auto;
+  border: 1px solid var(--one);
+  border-collapse: collapse;
+  
+}
+th {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+td {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  padding: 10px 15px;
+  text-transform: capitalize;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(odd) {background-color: #ececec;}
+th {
+  background-color: var(--one);
+  color: var(--two);
+  padding: 1vw 2vw;
+}
