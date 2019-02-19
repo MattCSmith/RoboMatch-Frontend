@@ -1,6 +1,6 @@
 addLeader = (name, clicks, time, mode, cards, target, score) => {
     const body = `name=${name}&clicks=${clicks}&time=${time}&mode=${mode}&cards=${cards}&target=${target}&score=${score}`
-    fetch("http://cors.io/?https://robomatch-backend.herokuapp.com/submit", {
+    fetch("https://crossorigin.me/https://robomatch-backend.herokuapp.com/submit", {
         body: body,
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -10,7 +10,7 @@ addLeader = (name, clicks, time, mode, cards, target, score) => {
 }
 
 fetchLeaders = () => {
-    fetch('http://cors.io/?https://robomatch-backend.herokuapp.com/view', {
+    fetch('https://crossorigin.me/https://robomatch-backend.herokuapp.com/view', {
         mode: "no-cors"
     })
         .then(function (response) {
