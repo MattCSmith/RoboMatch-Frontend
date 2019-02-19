@@ -17,11 +17,42 @@
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Montserrat|Raleway:200" rel="stylesheet">
 </head>
 
-<body>
-    <div id="panel">
+<body id="body">
+    <div id="panel" class="panel">
         <!-- Dynamically created -->
     </div>
 
+    <!-- Stats Bar -->
+    <div id="statsBox" class="statsBox hidden">
+        <div class="stat time">
+            <i class="far fa-clock"></i>
+            <p id="time">0 Secs</p>
+        </div>
+        <div class="stat click">
+            <i class="fas fa-mouse-pointer"></i>
+            <p id="clicks">0 Clicks</p>
+        </div>
+        <div class="stat">
+            <i id="iTarget" class="fas fa-crosshairs"></i>
+            <p id="target">0 Target</p>
+        </div>
+        <div class="stat found"><i class="far fa-check-circle"></i>
+            <p id="matched">0 Paired</p>
+        </div>
+        <div class="stat"><i class="fas fa-trophy"></i>
+            <p id="score">0</p>
+        </div>
+    </div>
+
+    <!-- Card Container -->
+    <div id="cc">
+
+    </div>
+
+    <button onclick="testWin()"></button>
+    <script src="./scripts/functions.js"></script>
+    <script src="./scripts/gameplay.js"></script>
+    <script src="./scripts/leaderboard.js"></script>
     <script src="./scripts/screens.js"></script>
 </body>
 

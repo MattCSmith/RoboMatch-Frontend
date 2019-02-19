@@ -38,7 +38,7 @@ button:focus {
   outline: 0;
 }
 
-#panel {
+.panel {
   position: absolute;
   background: rgba(255, 255, 255, 0.753);
   border-radius: 15px;
@@ -53,20 +53,20 @@ button:focus {
   margin-bottom: 90px
 }
 
-#panel h1 {
+.panel h1 {
   font-size: 1.8em;
   font-family: 'Audiowide', cursive;
   color: var(--one);
   margin: 18px 0 0 0;
 }
 
-#panel .menuNav button {
+.panel .menuNav button {
   margin: 20px 1%;
   padding: 10px 10px 6px;
   font-size: 17px
 }
 
-#panel .menuNav i {
+.panel .menuNav i {
   display: inline;
   font-size: 20px;
   padding: 0px;
@@ -74,13 +74,13 @@ button:focus {
   color: var(--two)
 }
 
-#panel .menuNav p {
+.panel .menuNav p {
   display: inline;
   font-size: 18px;
   color: var(--blue)
 }
 
-#panel h3 {
+.panel h3 {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   color: #4085bf
@@ -154,7 +154,7 @@ button:focus {
 
 /* Info Panel */
 
-#infoPanel {
+.infoPanel {
   width: 80%;
   margin: 15px auto;
   border: 1px solid var(--three);
@@ -163,13 +163,13 @@ button:focus {
   background: #ffffff71
 }
 
-#infoPanel h2 {
+.infoPanel h2 {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   color: #4085bf
 }
 
-#infoPanel p {
+.infoPanel p {
   margin: 0;
   color: var(--four);
   font-family: 'Raleway', sans-serif;
@@ -177,7 +177,7 @@ button:focus {
   text-align: justify;
 }
 
-#infoPanel a {
+.infoPanel a {
   color: var(--one);
   text-decoration: none;
 }
@@ -231,4 +231,127 @@ button:focus {
   padding: 10px;
   color: var(--one);
   font-weight: bold
+}
+
+#cc {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card{
+  background: url("../images/ztmbg.png");
+  background-size: cover;
+  margin: 5px;
+  padding: 5px;
+  min-width: 8vw;
+  min-height: 8.4vw;
+}
+
+.card img {
+  width: 8vw;
+  height: auto;
+}
+
+.hidden {
+  display: none!important
+}
+
+#statsBox {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px 0 8px;
+  background-color: #ffffffd5;
+  border-bottom: 4px solid var(--two)
+}
+.stat {
+  width: 20%;
+  margin: 0 auto;
+  text-align: center
+}
+i {
+  color: var(--two);
+  font-size: 30px;
+  padding: 0 10px
+}
+.stat p {
+margin: 0;
+  font-size: 18px;
+  color: var(--four);
+  font-family: 'Montserrat', sans-serif;
+  padding: 3px 6px 
+}
+
+.orange {
+  color: rgb(253, 165, 0)
+}
+
+.red {
+  color: rgb(255, 0, 0)
+}
+
+#won h3 {
+  color: var(--four);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  margin: 6px 0 20px;
+}
+
+#won p {
+  text-align: center;
+}
+
+#won h4 {
+  color: var(--one);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-transform: capitalize;
+  margin: 15px 0 0px;
+}
+
+.subCard span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: var(--four)
+}
+
+#won h5 {
+  color: var(--four);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  margin: 5px 0 0px;
+}
+
+.submitStats {
+  margin:30px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+.subCard {
+  min-width: 200px;
+  padding: 20px;
+  flex:1 1 auto;
+  border:1px var(--three) solid;
+  border-radius: 5px;
+  text-align:center;
+  background: rgba(255, 255, 255, 0.452);
+  margin:5px; 
+}
+
+#won .infoPanel {
+  border-color: var(--one)
+}
+#won input[type=text] {
+  border: 0.5px solid var(--three);
+  border-radius: 5px;
+  margin: 5px 15px;
+  padding: 7px;
+  color: var(--two);
+  font-weight: 900; 
+  text-align: center;
+}
+
+#won button {
+  margin: 25px 0 0;
+  border-radius: 5px
 }

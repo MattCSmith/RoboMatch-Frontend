@@ -1,6 +1,7 @@
 const currentSelections = {
     screen: "play",
-    mode: "select"
+    mode: "select",
+    images: 20
 };
 const levels = {
     select: {
@@ -12,25 +13,33 @@ const levels = {
         name: "Easy",
         title: "Easy Mode",
         desc: "A simple gamemode, with fairly unique robots and a slow flip back time of 0.8 seconds. A great way to warm up that prefrontal cortex",
-        maxImages: 30
+        maxImages: 30,
+        imgLocation: './images/levels/easy/',
+        speed: 800
     },
     medium: {
         name: "Medium",
         title: "Medium Mode",
         desc: "This gamemode has upto a 100 images, where some may share some similarites. The flip back time in this mode is set at 0.6 seconds",
-        maxImages: 50
+        maxImages: 50,
+        imgLocation: './images/levels/medium/',
+        speed: 600
     },
     hard: {
         name: "Hard",
         title: "Hard Mode",
         desc: "A fairly challenging gamemode, featuring 9 colour sets each containing 50 robots. Each game will consist of only one colour set and a flip back time of 0.4 seconds",
-        maxImages: 100
+        maxImages: 100,
+        imgLocation: './images/levels/hard/',
+        speed: 400
     },
     insane: {
         name: "Insane",
         title: "Insane Mode",
         desc: "Not for the faint hearted, with similarities to hard mode. With a flip back time of a mere 0.2 seconds and each robot is randomly rotated",
-        maxImages: 100
+        maxImages: 100,
+        imgLocation: './images/levels/hard/',
+        speed: 200
     }
 };
 
@@ -77,6 +86,7 @@ createInfoPanel = (container, title, desc) => {
     // Create the information window for the play screen
     const infoPanel = document.createElement("div");
     infoPanel.setAttribute("id", "infoPanel");
+    infoPanel.setAttribute("class", "infoPanel")
 
     const infoTitle = document.createElement("h2");
     infoTitle.setAttribute("id", "infoTitle");
@@ -99,7 +109,6 @@ changeScreen = (value) => {
         if (document.getElementById(screen) !== null) document.getElementById(screen).remove();
     });
 
-    console.log()
     // Display selected screen
     if (value === "play") displayHome();
     if (value === "leaderboard") displayLeaderboard();
@@ -173,13 +182,14 @@ changeMode = (value) => {
     if (document.getElementById("letsPlayBtn") !== null) document.getElementById("letsPlayBtn").remove();
     const playBtn = document.createElement("button");
     playBtn.setAttribute("id", "letsPlayBtn");
-    playBtn.setAttribute('onchange', 'startGame()');
+    playBtn.setAttribute('onclick', 'startGame()');
     playBtn.textContent = "Lets Play"
     infoPanel.appendChild(playBtn);
 };
 
 sliderOnchange = (value) => {
     document.getElementById("slideNum").textContent = `${value} Images`;
+    currentSelections.images = value;
 };
 
 displayLeaderboard = () => {
@@ -192,6 +202,11 @@ displayLeaderboard = () => {
         "Overlords",
         "Did you have what it takes to become the best Robo Overlord? You can use the icon in the bottom left to sort and filter the leaderboard."
     );
+
+    const tableCont = document.createElement("div");
+    tableCont.setAttribute("style", "overflow-x:auto");
+
+    
 
     panel.appendChild(leaderContainer);
 };
@@ -208,4 +223,93 @@ displayAbout = () => {
     );
 
     panel.appendChild(aboutContainer);
+};
+createWon = () => {
+    // Displays the Won game panel, when all cards have be found
+    const wonContainer = document.createElement("div");
+    wonContainer.setAttribute("id", "won");
+    wonContainer.setAttribute("class", "panel");
+
+    const title = document.createElement("h1");
+    title.textContent = "Congratulations";
+    wonContainer.appendChild(title);
+
+    const subTitle = document.createElement("h3");
+    subTitle.textContent = "You found all the matching pairs!";
+    wonContainer.appendChild(subTitle);
+
+    const cardCont = document.createElement("div");
+    cardCont.setAttribute("class", "submitStats");
+    wonContainer.appendChild(cardCont);
+
+    const data = [
+        ["Difficulty", "far fa-star", currentSelections.mode],
+        ["points", "fas fa-trophy", stats.score],
+        ["Seconds", "far fa-clock", stats.time],
+        ["Image Pairs", "fas fa-robot", currentSelections.images],
+        ["Clicks", "fas fa-mouse-pointer", stats.clicks],
+        ["Target", "fas fa-crosshairs", stats.target]
+    ]
+
+    data.forEach(d => {
+        console.log(d)
+        const card = document.createElement("div");
+        card.setAttribute("class", "subCard");
+        
+        const icon = document.createElement("i")
+        icon.setAttribute("class", d[1])
+        card.appendChild(icon)
+
+        const text = document.createElement("h4");
+        text.textContent = `${d[2]} `;
+        card.appendChild(text);
+
+        const span = document.createElement("span");
+        span.textContent = d[0];
+        text.appendChild(span)
+
+        cardCont.appendChild(card);
+    });
+
+    const submitPanel = document.createElement("div");
+    submitPanel.setAttribute("class", "infoPanel");
+    wonContainer.appendChild(submitPanel);
+
+    const spTitle = document.createElement("h2");
+    spTitle.textContent = "Submit Your Score!"
+    submitPanel.appendChild(spTitle);
+
+    const spDesc = document.createElement("p");
+    spDesc.textContent = "Why not submit your score to the global leaderboard and see how your compare to other players";
+    submitPanel.appendChild(spDesc);
+
+    const spInputLabel = document.createElement("h4")
+    spInputLabel.textContent = "Name: "
+    submitPanel.appendChild(spInputLabel);
+
+    const spInput = document.createElement("input")
+    spInput.setAttribute("id", "nameInput")
+    spInput.setAttribute("type", "text")
+    spInput.value = username
+    spInputLabel.appendChild(spInput);
+    
+
+    const rememberLabel = document.createElement("h5");
+    rememberLabel.textContent = "Should we remember this name for future use?";
+    submitPanel.appendChild(rememberLabel)
+
+    const rememberMe = document.createElement("input");
+    rememberMe.setAttribute("type", "checkbox");
+    rememberMe.setAttribute("id", "rememberMe");
+    if (localStorage.getItem("username")) rememberMe.checked = true
+    rememberMe.setAttribute('onclick', `cookieMonster()`);
+    rememberLabel.prepend(rememberMe)
+
+    const submitBtn = document.createElement("button");
+    submitBtn.setAttribute('onclick', `submitScore()`);
+    submitBtn.textContent = "Submit Score"
+    submitPanel.appendChild(submitBtn);
+
+    document.getElementById("body").appendChild(wonContainer)
+
 }
