@@ -52,17 +52,7 @@ updateStats = (stat, method, value) => {
     };
 
     document.getElementById(stat).textContent = `${stats[stat]} ${suffix[stat]}`;
-
-
 };
-
-// updateStats = (stat, option) => {
-//     if(option !== "reset") stats[stat]++;
-//     let suff = {time: "Secs", clicks: "Clicks", matched: "Paired", score: ""}
-//     document.getElementById(stat).textContent = `${stats[stat]} ${suff[stat]}`;
-//     if(stats.target - stats.clicks < 5) document.getElementById("iTarget").setAttribute("class", "fas fa-crosshairs orange")
-//     if(stats.target - stats.clicks <= 0) document.getElementById("iTarget").setAttribute("class", "fas fa-crosshairs red")
-// };
 
 buildDeck = () => {
     deck = [];
@@ -96,7 +86,8 @@ dealDeck = () => {
         };
 
         const img = document.createElement("img");
-        img.src = `${levels[currentSelections.mode].imgLocation}${c}.png`;
+        if(currentSelections.mode === "hard" || currentSelections.mode === "insane") img.src = `${levels[currentSelections.mode].imgLocation}${colour}/${c}.png`;
+        else img.src = `${levels[currentSelections.mode].imgLocation}${c}.png`;
         img.setAttribute("id", `${c}-${i}`);
         img.setAttribute("class", "hidden");
         if (currentSelections.mode === "insane") img.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
