@@ -380,3 +380,139 @@ th {
   color: var(--two);
   padding: 1vw 2vw;
 }
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:rgba(255, 255, 255, 0.966);
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+.float i{
+    margin-top:15px;
+}
+
+.float:hover {
+    -webkit-box-shadow: 4px 6px 5px 0px rgba(56, 56, 56, 0.789);
+    -moz-box-shadow: 4px 6px 5px 0px rgba(56, 56, 56, 0.789);
+    box-shadow: 4px 6px 5px 0px rgba(56, 56, 56, 0.789);
+    cursor: pointer;
+}
+
+.float:hover i {
+    color: var(--one);
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: #fefefe;
+  width: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: var(--one);
+  color: white;
+}
+
+.modal-header h2, .modal-header span {
+    display: inline-block;
+    padding: 12px;
+    margin: 0;
+    height: auto;
+    font-family: Montserrat, sans-serif;
+    font-size: 19px;
+}
+
+.modal-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 2;
+  padding: 10px 25px;
+  align-items: stretch
+}
+
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+.filterBox {
+    flex: 1;
+    border: 1px solid var(--one);
+    margin: 20px;
+    padding: 10px 10px;
+    text-align: center
+}
+.filterBox h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.small select{
+  font-size: 13px!important;
+  background: var(--four);
+  padding: 13px 50px 10px 25px;
+}

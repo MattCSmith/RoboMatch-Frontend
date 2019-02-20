@@ -49,9 +49,73 @@
 
     </div>
 
+    <div class="float hidden" id="homeBtn" onclick="goHome()">
+        <i class="fas fa-home my-float"></i>
+    </div>
+
+    <div class="float hidden" id="filterBtn">
+        <i class="fas fa-filter my-float"></i>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Sort and Filter Results</h2>
+            </div>
+            
+            <div class="modal-body">
+                
+                <div class="filterBox">
+                    <h4>Filter by: </h4>
+                    <span class="custom-dropdown small">
+                        <select onchange="orderData('f1', value)">
+                            <option value="name">User</option>
+                            <option value="mode" selected=selected>Difficulty</option>
+                            <option value="cards">Images</option>
+                        </select>
+                    </span>
+                    <span class="custom-dropdown small">
+                            <select id="selectOptions" onchange="orderData('f2', value)">
+                                <option value="easy">easy</option>
+                                <option value="name">User</option>
+                                <option value="hard">Hard</option>
+                                <option value="insane">Insane</option>
+                            </select>
+                        </span>
+                </div>
+
+                <div class="filterBox">
+                        <h4>Sort by: </h4>
+                    <span class="custom-dropdown small">
+
+                        <select onchange="sortData(value, sort[1])">
+                            <option id="user" value="name">User</option>
+                            <option value="mode">Mode</option>
+                            <option value="time">Time</option>
+                            <option value="clicks">Clicks</option>
+                            <option value="target">Target</option>
+                            <option value="cards">Images</option>
+                            <option value="score" selected=true>Score</option>
+                        </select>
+                    </span>
+                    <span class="custom-dropdown small">
+                        <select onchange="sortData(sort[0], value)">
+                            <option value="asc">Ascending</option>
+                            <option value="desc" selected=true>Descending</option>
+                        </select>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
     <script src="./scripts/functions.js"></script>
     <script src="./scripts/gameplay.js"></script>
     <script src="./scripts/leaderboard.js"></script>
+    <script src="./scripts/modal.js"></script>
     <script src="./scripts/screens.js"></script>
 </body>
 

@@ -113,6 +113,13 @@ changeScreen = (value) => {
     if (value === "play") displayHome();
     if (value === "leaderboard") displayLeaderboard();
     if (value === "about") displayAbout();
+
+    // Set Active class
+    let pages = ["play", "leaderboard", "about"];
+    pages.forEach(p => {
+        if(p !== value) document.getElementById(`${p}Btn`).classList.remove("active");
+        else document.getElementById(`${p}Btn`).classList.add("active")
+    });
 };
 
 displayHome = () => {
@@ -142,6 +149,8 @@ displayHome = () => {
     );
 
     panel.appendChild(playContainer);
+
+    hideElement(["homeBtn", "filterBtn"])
 };
 
 createPanel();
@@ -230,6 +239,9 @@ displayLeaderboard = () => {
 
     panel.appendChild(leaderContainer);
     fetchLeaders()
+
+    hideElement("homeBtn");
+    showElement("filterBtn")
 };
 
 displayAbout = () => {
@@ -244,6 +256,8 @@ displayAbout = () => {
     );
 
     panel.appendChild(aboutContainer);
+
+    hideElement(["homeBtn", "filterBtn"])
 };
 createWon = () => {
     // Displays the Won game panel, when all cards have be found

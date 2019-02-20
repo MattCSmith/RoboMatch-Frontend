@@ -1,3 +1,12 @@
+setActive = (page) => {
+    let pages = ["play", "leaderboard", "about"];
+    pages.forEach(p => {
+        if(p !== page) document.getElementById(`${p}Btn`).classList.remove("active");
+        else document.getElementById(`${p}Btn`).classList.add("active")
+    });
+
+}
+
 hideElement = (elem) => {
     console.log(elem)
     if (typeof elem === "object") {
@@ -60,7 +69,8 @@ submitScore = () => {
     if(document.getElementById(`rememberMe`).checked) localStorage.setItem("username", username);
     addLeader(username, stats.clicks, stats.time, currentSelections.mode, currentSelections.images, stats.target, stats.score);
     hideElement(["won"]);
+    const won = document.getElementById("won");
+    won.parentNode.removeChild(won);
     showElement("panel");
-
     changeScreen("leaderboard");
 }

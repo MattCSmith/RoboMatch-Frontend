@@ -1,18 +1,33 @@
-const stats = {
-    time: 0,
-    clicks: 0,
-    matched: 0,
-    target: 0,
-    score: 0
-};
+let stats = {};
 let deck = [];
 let cardsFound = [];
 let username = getUsername();
 
+resetGame = () => {
+    stats = {
+        time: 0,
+        clicks: 0,
+        matched: 0,
+        target: 0,
+        score: 0
+    };
+    deck = [];
+    cardsFound = [];
+    currentFlipped = [];
+
+    const cardCont = document.getElementById("cc");
+    while (cardCont.hasChildNodes()) {   
+        cardCont.removeChild(cardCont.firstChild);
+    }
+
+    showElement("cc")
+}
+
 startGame = () => {
+    resetGame()
     console.log(currentSelections);
     initStats();
-    showElement("statsBox");
+    showElement(["statsBox", "homeBtn"]);
     hideElement("panel");
     buildDeck();
 };
@@ -30,7 +45,6 @@ initStats = () => {
 };
 
 updateStats = (stat, method, value) => {
-    console.log(stat)
     let suffix = {
         time: "Secs",
         clicks: "Clicks",
@@ -42,7 +56,6 @@ updateStats = (stat, method, value) => {
     if (method === "addPoint") {
         stats[stat]++;
         if (stat === "clicks") {
-            console.log("TEST")
             if (stats.target - stats.clicks < 5) document.getElementById("iTarget").setAttribute("class", "fas fa-crosshairs orange");
             if (stats.target - stats.clicks <= 0) document.getElementById("iTarget").setAttribute("class", "fas fa-crosshairs red")
         };
@@ -86,7 +99,7 @@ dealDeck = () => {
         };
 
         const img = document.createElement("img");
-        if(currentSelections.mode === "hard" || currentSelections.mode === "insane") img.src = `${levels[currentSelections.mode].imgLocation}${colour}/${c}.png`;
+        if (currentSelections.mode === "hard" || currentSelections.mode === "insane") img.src = `${levels[currentSelections.mode].imgLocation}${colour}/${c}.png`;
         else img.src = `${levels[currentSelections.mode].imgLocation}${c}.png`;
         img.setAttribute("id", `${c}-${i}`);
         img.setAttribute("class", "hidden");

@@ -31,5 +31,5 @@ fetchLeaders = () => {
                 table.appendChild(row)
             });
         });
-}
+};
 
