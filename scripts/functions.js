@@ -64,9 +64,3 @@ submitScore = () => {
 
     changeScreen("leaderboard");
 }
-
-testWin = () => {
-    hideElement(["statsBox", "cc", "panel"])
-    createWon()
-        
-}

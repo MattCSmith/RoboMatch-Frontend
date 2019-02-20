@@ -145,20 +145,8 @@ noMatch = () => {
 checkWin = () => {
     if (stats.matched >= currentSelections.images) {
         clearInterval(time)
-        // document.getElementById(`nameInput`).value = username;
         hideElement(["statsBox", "cc"])
-        // setContent([
-        //     ["submitDiff", difficulty],
-        //     ["submitCards", imgSets],
-        //     [
-        //         ["submitTime", stats.time],
-        //         ["submitClicks", stats.clicks],
-        //         ["submitTarget", stats.target],
-        //         ["submitScore", stats.score]
-        //     ]
-        // ])
         createWon()
-        showElement("panel")
     }
 }
 
