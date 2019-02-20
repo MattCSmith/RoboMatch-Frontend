@@ -10,7 +10,7 @@ addLeader = (name, clicks, time, mode, cards, target, score) => {
 }
 
 fetchLeaders = () => {
-    fetch('https://robomatch-backend.herokuapp.com/view')
+    fetch('https://robomatch-backend.herokuapp.com/view?sort=score&order=asc')
         .then(function (response) {
             console.log(response)
             return response.json();
