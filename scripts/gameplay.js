@@ -15,17 +15,13 @@ resetGame = () => {
     cardsFound = [];
     currentFlipped = [];
 
-    const cardCont = document.getElementById("cc");
-    while (cardCont.hasChildNodes()) {   
-        cardCont.removeChild(cardCont.firstChild);
-    }
+    removeChildren("cc")
 
     showElement("cc")
 }
 
 startGame = () => {
     resetGame()
-    console.log(currentSelections);
     initStats();
     showElement(["statsBox", "homeBtn"]);
     hideElement("panel");

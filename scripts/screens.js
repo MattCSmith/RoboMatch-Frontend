@@ -3,45 +3,6 @@ const currentSelections = {
     mode: "select",
     images: 20
 };
-const levels = {
-    select: {
-        name: "Select level...",
-        title: "Aim of the game",
-        desc: "RoboMatch, which can also be known as MatchUp, Pelmanism, Memory, Pexeso, Concentration, Shinkei-suijaku or simply Pairs, is a simple card game. In which all of the cards are laid face down and each turn sees two card turned over. Only matching pairs will remain face up! The object of the game is to turn over all the matching pairs."
-    },
-    easy: {
-        name: "Easy",
-        title: "Easy Mode",
-        desc: "A simple gamemode, with fairly unique robots and a slow flip back time of 0.8 seconds. A great way to warm up that prefrontal cortex",
-        maxImages: 30,
-        imgLocation: './images/levels/easy/',
-        speed: 800
-    },
-    medium: {
-        name: "Medium",
-        title: "Medium Mode",
-        desc: "This gamemode has upto a 100 images, where some may share some similarites. The flip back time in this mode is set at 0.6 seconds",
-        maxImages: 100,
-        imgLocation: './images/levels/medium/',
-        speed: 600
-    },
-    hard: {
-        name: "Hard",
-        title: "Hard Mode",
-        desc: "A fairly challenging gamemode, featuring 9 colour sets each containing 50 robots. Each game will consist of only one colour set and a flip back time of 0.4 seconds",
-        maxImages: 50,
-        imgLocation: './images/levels/hard/',
-        speed: 400
-    },
-    insane: {
-        name: "Insane",
-        title: "Insane Mode",
-        desc: "Not for the faint hearted, with similarities to hard mode. With a flip back time of a mere 0.2 seconds and each robot is randomly rotated",
-        maxImages: 50,
-        imgLocation: './images/levels/hard/',
-        speed: 200
-    }
-};
 
 const panel = document.getElementById("panel");
 
@@ -117,7 +78,7 @@ changeScreen = (value) => {
     // Set Active class
     let pages = ["play", "leaderboard", "about"];
     pages.forEach(p => {
-        if(p !== value) document.getElementById(`${p}Btn`).classList.remove("active");
+        if (p !== value) document.getElementById(`${p}Btn`).classList.remove("active");
         else document.getElementById(`${p}Btn`).classList.add("active")
     });
 };
@@ -220,22 +181,22 @@ displayLeaderboard = () => {
     table.setAttribute("id", "table")
     tableCont.appendChild(table)
 
-    const tbody = document.createElement("tbody")
-    table.appendChild(tbody)
-
     const tr = document.createElement("tr")
-    tbody.appendChild(tr)
+    table.appendChild(tr)
 
-    const headingsArray = ["fas fa-user-ninja", "far fa-star", "far fa-clock", "fas fa-mouse-pointer","fas fa-crosshairs", "fas fa-robot", "fas fa-trophy"]
+    const headingsArray = ["fas fa-user-ninja", "far fa-star", "far fa-clock", "fas fa-mouse-pointer", "fas fa-crosshairs", "fas fa-robot", "fas fa-trophy"]
     headingsArray.forEach(h => {
         const heading = document.createElement("th")
         tr.appendChild(heading)
-        
+
         const i = document.createElement("i")
         i.setAttribute("class", h)
         heading.appendChild(i)
     });
-    
+
+    const tbody = document.createElement("tbody")
+    tbody.setAttribute("id", "tbody")
+    table.appendChild(tbody)
 
     panel.appendChild(leaderContainer);
     fetchLeaders()
@@ -249,11 +210,44 @@ displayAbout = () => {
     const aboutContainer = document.createElement("div");
     aboutContainer.setAttribute("id", "aboutContainer");
 
-    createInfoPanel(
-        aboutContainer,
-        "Vanillia JS Coding Challenge",
-        "To be updated"
-    );
+    const infoPanel = document.createElement("div");
+    infoPanel.setAttribute("id", "infoPanel");
+    infoPanel.setAttribute("class", "infoPanel")
+
+    const infoTitle = document.createElement("h2");
+    infoTitle.setAttribute("id", "infoTitle");
+    infoTitle.textContent = "Vanillia JS Coding Challenge";
+    infoPanel.appendChild(infoTitle);
+
+    const infoDesc = document.createElement("p");
+    infoDesc.setAttribute("id", "infoDesc");
+    infoDesc.textContent = "A coding challenge created by Andrei from the Zero To Mastery coding community, designed to build upon and improve vanilla Javascript development skills.";
+    infoPanel.appendChild(infoDesc);
+
+    const p = document.createElement("p")
+    p.textContent = "Extending the rule where no JS library could be use, I decided to not to use any frameworks or libraries where possible. Unfortunately I had to use node/express purely to protect the credentials of the firebase databse, in which the leaderboard data is stored."
+    infoPanel.appendChild(p)
+
+    const p1 = document.createElement("p")
+    p1.textContent = "During this challenge, I learnt alot about manipulating the DOM. I tried to use as many different elements as possible, so I could experiment with creating, editing and removing them on the fly. "
+    infoPanel.appendChild(p1)
+
+    aboutContainer.appendChild(infoPanel);
+
+    const more = document.createElement("div")
+    more.setAttribute("class", "moreInfo")
+    more.addEventListener('click', function() {
+        location.href = 'https://github.com/MattCSmith/RoboMatch-Frontend'
+    }, false);
+    aboutContainer.appendChild(more)
+
+    const i = document.createElement("i")  
+    i.setAttribute("class", "fab fa-github")
+    more.appendChild(i)
+
+    const moreTitle = document.createElement("h3")
+    moreTitle.textContent = "Find out more!"
+    more.appendChild(moreTitle)
 
     panel.appendChild(aboutContainer);
 
@@ -287,10 +281,9 @@ createWon = () => {
     ]
 
     data.forEach(d => {
-        console.log(d)
         const card = document.createElement("div");
         card.setAttribute("class", "subCard");
-        
+
         const icon = document.createElement("i")
         icon.setAttribute("class", d[1])
         card.appendChild(icon)
@@ -327,7 +320,7 @@ createWon = () => {
     spInput.setAttribute("type", "text")
     spInput.value = username
     spInputLabel.appendChild(spInput);
-    
+
 
     const rememberLabel = document.createElement("h5");
     rememberLabel.textContent = "Should we remember this name for future use?";

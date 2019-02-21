@@ -1,14 +1,13 @@
 setActive = (page) => {
     let pages = ["play", "leaderboard", "about"];
     pages.forEach(p => {
-        if(p !== page) document.getElementById(`${p}Btn`).classList.remove("active");
+        if (p !== page) document.getElementById(`${p}Btn`).classList.remove("active");
         else document.getElementById(`${p}Btn`).classList.add("active")
     });
 
 }
 
 hideElement = (elem) => {
-    console.log(elem)
     if (typeof elem === "object") {
         elem.forEach(elem => {
             hideElement(elem);
@@ -22,6 +21,13 @@ showElement = (elem) => {
             showElement(elem);
         });
     } else document.getElementById(elem).classList.remove("hidden");
+}
+
+removeChildren = (elem) => {
+    const element = document.getElementById(elem);
+    while (element.hasChildNodes()) {
+        element.removeChild(element.firstChild);
+    }
 }
 
 getUsername = () => {
@@ -53,10 +59,10 @@ getUsername = () => {
 }
 
 cookieMonster = () => {
-    if(!document.getElementById(`rememberMe`).checked) return;
+    if (!document.getElementById(`rememberMe`).checked) return;
     else {
         const confirm = window.confirm("Cookie Monster Alert! \nRemembering your username will store this data in your browser in a similar way a cookie would. Are you happy for this to happen? \n\n\nClicking cancel will remove any previously agreed \"Cookies\"")
-        if(confirm) document.getElementById(`rememberMe`).checked = true
+        if (confirm) document.getElementById(`rememberMe`).checked = true
         else {
             document.getElementById(`rememberMe`).checked = false;
             localStorage.removeItem("username");
@@ -66,7 +72,7 @@ cookieMonster = () => {
 
 submitScore = () => {
     username = document.getElementById(`nameInput`).value;
-    if(document.getElementById(`rememberMe`).checked) localStorage.setItem("username", username);
+    if (document.getElementById(`rememberMe`).checked) localStorage.setItem("username", username);
     addLeader(username, stats.clicks, stats.time, currentSelections.mode, currentSelections.images, stats.target, stats.score);
     hideElement(["won"]);
     const won = document.getElementById("won");

@@ -63,44 +63,42 @@
                 <span class="close">&times;</span>
                 <h2>Sort and Filter Results</h2>
             </div>
-            
+
             <div class="modal-body">
-                
+
                 <div class="filterBox">
                     <h4>Filter by: </h4>
                     <span class="custom-dropdown small">
-                        <select onchange="orderData('f1', value)">
+                        <select id="filterSel" onchange="filterData(value, null)">
+                            <option value="all" selected=selected>Select Filter...</option>
                             <option value="name">User</option>
-                            <option value="mode" selected=selected>Difficulty</option>
+                            <option value="mode">Difficulty</option>
                             <option value="cards">Images</option>
                         </select>
                     </span>
                     <span class="custom-dropdown small">
-                            <select id="selectOptions" onchange="orderData('f2', value)">
-                                <option value="easy">easy</option>
-                                <option value="name">User</option>
-                                <option value="hard">Hard</option>
-                                <option value="insane">Insane</option>
-                            </select>
-                        </span>
+                        <select id="selectOptions" onchange="filterData(null, value)">
+                        </select>
+                    </span>
+                    <i class="fas fa-undo removeFilter" onclick="removeFilter()"></i>
                 </div>
 
                 <div class="filterBox">
-                        <h4>Sort by: </h4>
+                    <h4>Sort by: </h4>
                     <span class="custom-dropdown small">
 
-                        <select onchange="sortData(value, sort[1])">
-                            <option id="user" value="name">User</option>
-                            <option value="mode">Mode</option>
-                            <option value="time">Time</option>
-                            <option value="clicks">Clicks</option>
-                            <option value="target">Target</option>
-                            <option value="cards">Images</option>
-                            <option value="score" selected=true>Score</option>
+                        <select id="sortOpts" onchange="sortData(value, null)">
+                            <option id="sortname" value="name">User</option>
+                            <option id="sortmode" value="mode">Mode</option>
+                            <option id="sortTime" value="time">Time</option>
+                            <option id="sortClicks" value="clicks">Clicks</option>
+                            <option id="sortTarget" value="target">Target</option>
+                            <option id="sortcards" value="cards">Images</option>
+                            <option id="sortScore" value="score" selected=true>Score</option>
                         </select>
                     </span>
                     <span class="custom-dropdown small">
-                        <select onchange="sortData(sort[0], value)">
+                        <select onchange="sortData(null, value)">
                             <option value="asc">Ascending</option>
                             <option value="desc" selected=true>Descending</option>
                         </select>
@@ -111,7 +109,7 @@
         </div>
 
     </div>
-
+    <script src="./scripts/gameOptions.js"></script>
     <script src="./scripts/functions.js"></script>
     <script src="./scripts/gameplay.js"></script>
     <script src="./scripts/leaderboard.js"></script>
