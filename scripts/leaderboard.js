@@ -25,7 +25,7 @@ fetchLeaders = () => {
                 const row = document.createElement("tr")
                 row.setAttribute("class", "userRow")
 
-                const data = ["name", "mode", "time", "clicks", "cards", "target", "score"]
+                const data = ["name", "mode", "time", "clicks", "target", "cards", "score"]
                 data.forEach(element => {
                     const td = document.createElement("td")
                     td.textContent = leader[element]

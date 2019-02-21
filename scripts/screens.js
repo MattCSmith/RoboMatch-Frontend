@@ -170,7 +170,7 @@ displayLeaderboard = () => {
     createInfoPanel(
         leaderContainer,
         "Overlords",
-        "Did you have what it takes to become the best Robo Overlord? You can use the icon in the bottom left to sort and filter the leaderboard."
+        "Did you have what it takes to become the best Robo Overlord? You can use the icon in the bottom right to sort and filter the leaderboard."
     );
 
     const tableCont = document.createElement("div");
