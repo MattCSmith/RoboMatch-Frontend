@@ -116,6 +116,7 @@ timeGame = () => {
 
 flipCard = (c) => {
     if (cardsFound.includes(c)) return;
+    if(currentFlipped.includes(c)) return;
     if (currentFlipped.length > 1) return;
     else {
         showElement(c);
